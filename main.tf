@@ -1,5 +1,15 @@
+data "aws_ami" "ubuntu" {
+  most_recent = true
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
+  }
+
+  owners = ["099720010947700"]
+}
+
 resource "aws_instance" "publicInstanceRancher" {
-  ami                    = var.ami
+  ami                    = data.aws_ami.ubuntu.id
   instance_type          = var.instanceTypeRancher
   key_name               = var.keyName
   vpc_security_group_ids = [aws_security_group.awslab-sg-public.id]
@@ -15,7 +25,7 @@ resource "aws_instance" "publicInstanceRancher" {
 
 resource "aws_instance" "publicInstanceK8s" {
   count                  = var.instance_count
-  ami                    = var.ami
+  ami                    = data.aws_ami.ubuntu.id
   instance_type          = var.instanceTypeK8s
   key_name               = var.keyName
   vpc_security_group_ids = [aws_security_group.awslab-sg-public.id]

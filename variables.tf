@@ -6,7 +6,7 @@ variable "instanceNamePublicRancher" {
 
 variable "instance_count" {
   description = "Number of Instances"
-  default = "3"
+  default     = "3"
 }
 
 variable "env" {
