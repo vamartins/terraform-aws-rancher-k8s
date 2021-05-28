@@ -6,7 +6,7 @@ variable "instanceNamePublicRancher" {
 
 variable "instance_count" {
   description = "Number of Instances"
-  default     = "3"
+  default = "3"
 }
 
 variable "env" {
@@ -17,11 +17,6 @@ variable "env" {
 variable "Provisioner" {
   description = "Application used to provisioning"
   default     = "Terraform"
-}
-
-variable "ami" {
-  description = "AWS AMI to be used "
-  default     = "ami-08962a4068733a2b6"
 }
 
 variable "instanceTypeRancher" {
